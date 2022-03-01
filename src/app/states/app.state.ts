@@ -31,7 +31,7 @@ export class AppState {
       tap(
         returnData => {
           const state = ctx.getState();
-          
+
           ctx.setState({
             ...state,
             users: returnData
@@ -42,7 +42,7 @@ export class AppState {
   }
 
   @Action(AddUsers)
-  addDataToState(ctx: StateContext<UserStateModel>, payload: AddUsers) {
+  addDataToState(ctx: StateContext<UserStateModel>, {payload}: AddUsers) {
     return this._du.addUsers(payload).pipe(
       tap(
         returnData => {
