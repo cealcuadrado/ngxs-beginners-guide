@@ -1,4 +1,4 @@
-import { GetUsers, AddUsers } from './../actions/app.actions';
+import { GetUsers, AddUsers, UpdateUsers, DeleteUsers } from './../actions/app.actions';
 import { Observable } from 'rxjs';
 import { AppState } from './../states/app.state';
 import { Component, OnInit } from '@angular/core';
@@ -42,9 +42,25 @@ export class LayoutComponent implements OnInit {
   }
 
   addUser() {
-    console.log(this.userForm.value);
     this.store.dispatch(new AddUsers(this.userForm.value));
     this.userForm.reset();
+  }
+
+  updateUser(id, i) {
+    const newData = {
+      id: id,
+      name: "Siddhesh Thipse",
+      username: "iamsid2399",
+      email: 'siddheshthipse09@gmail.com',
+      phone: '02138-280044',
+      website: 'samplewebsite.com'
+    }
+
+    this.store.dispatch(new UpdateUsers(newData, id, i));
+  }
+
+  deleteUser(id) {
+    this.store.dispatch(new DeleteUsers(id));
   }
 
 }
