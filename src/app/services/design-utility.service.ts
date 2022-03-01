@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { User } from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root'
@@ -14,19 +15,19 @@ export class DesignUtilityService {
     private http: HttpClient
   ) { }
 
-  private fetchUsers(): Observable<any> {
-    return this.http.get<any>(`${this.url}/users`);
+  fetchUsers(): Observable<User> {
+    return this.http.get<User>(`${this.url}/users`);
   }
 
-  private addUsers(userData: any): Observable<any> {
-    return this.http.post<any>(`${this.url}/users`, userData);
+  addUsers(userData: any): Observable<User> {
+    return this.http.post<User>(`${this.url}/users`, userData);
   }
 
-  private deleteUser(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.url}/users/${id}`);
+  deleteUser(id: number): Observable<User> {
+    return this.http.delete<User>(`${this.url}/users/${id}`);
   }
 
-  private updateUser(payload: any, id: number): Observable<any> {
-    return this.http.put<any>(`${this.url}/users/${id}`, payload);
+  updateUser(payload: any, id: number): Observable<User> {
+    return this.http.put<User>(`${this.url}/users/${id}`, payload);
   }
 }

@@ -1,3 +1,4 @@
+import { AppState } from './states/app.state';
 import { DesignUtilityService } from './services/design-utility.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -23,9 +24,9 @@ import { LayoutComponent } from './layout/layout.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxsModule,
-    NgxsLoggerPluginModule,
-    NgxsReduxDevtoolsPluginModule
+    NgxsModule.forRoot([AppState]),
+    NgxsLoggerPluginModule.forRoot(),
+    NgxsReduxDevtoolsPluginModule.forRoot()
   ],
   providers: [DesignUtilityService],
   bootstrap: [AppComponent]
